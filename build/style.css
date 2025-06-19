@@ -1,0 +1,91 @@
+/* glass-style.css */
+
+body {
+  background: linear-gradient(to right, #667eea, #764ba2);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.glass-subheader {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  z-index: 1040;
+  transition: background-color 0.3s ease;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+}
+
+.glass-subheader .contact-info {
+  flex: 1 1 auto;
+}
+
+.glass-subheader .social-icons {
+  flex: 0 0 auto;
+}
+
+.glass-nav {
+  backdrop-filter: blur(12px);
+  background-color: #355196;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.navbar .nav-link {
+  transition: color 0.3s ease;
+  color: white !important;
+}
+
+.navbar .nav-link:hover {
+  color: #ffc107 !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.5)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+@media (max-width: 768px) {
+  .glass-subheader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  .glass-subheader .contact-info,
+  .glass-subheader .social-icons {
+    margin-bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+  .glass-subheader .contact-info .email-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .glass-subheader .contact-info .ml-3 {
+    margin-left: 0 !important;
+  }
+  .navbar-nav {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .navbar-nav .nav-item {
+    margin: 5px 0;
+  }
+}
+
+/* Smooth Scroll Animation */
+html {
+  scroll-behavior: smooth;
+}
