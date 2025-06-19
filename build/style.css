@@ -8,6 +8,28 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* Master Slider Banner Carousel Styles */
+#masterSliderCarousel {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#masterSliderCarousel .carousel-item img {
+  max-height: 400px;
+  object-fit: cover;
+}
+
+#masterSliderCarousel .carousel-caption {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+#masterSliderCarousel .carousel-control-prev-icon,
+#masterSliderCarousel .carousel-control-next-icon {
+  filter: invert(1);
+}
+
 .glass-subheader {
   backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.1);
@@ -15,7 +37,7 @@ body {
   color: white;
   z-index: 1040;
   transition: background-color 0.3s ease;
-  padding: 10px 20px;
+  padding: 10px 20px 5px 20px;  /*reduced bottom padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,9 +57,16 @@ body {
 .glass-nav {
   backdrop-filter: blur(12px);
   background-color: #355196;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  /* Removed border-bottom to reduce extra space */
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
+  /* Removed box-shadow to reduce visual gap */
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
   transition: background-color 0.3s ease;
+  position: sticky !important;
+  top: 40px !important; /* set to sub-header height */
+  margin-top: 0;
+  padding-top: 0;
+  z-index: 1030;
 }
 
 .navbar .nav-link {
@@ -54,11 +83,18 @@ body {
 }
 
 @media (max-width: 768px) {
+  html, body {
+    overflow: visible !important;
+  }
   .glass-subheader {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1050 !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
   }
   .glass-subheader .contact-info,
   .glass-subheader .social-icons {
@@ -66,26 +102,103 @@ body {
     width: 100%;
     text-align: center;
   }
-  .glass-subheader .contact-info .email-container {
+  .glass-subheader .email-container {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 6px;
   }
-  .glass-subheader .contact-info .ml-3 {
+  .glass-subheader .ml-3 {
     margin-left: 0 !important;
+  }
+  .glass-nav {
+    position: sticky !important;
+    top: 100px !important; /* increased top offset for mobile */
+    z-index: 1040 !important;
+    background-color: #355196 !important;
+  }
+  #mainNav {
+    position: sticky !important;
+    top: 60px !important; /* adjusted top offset to stay below sub-header */
+    z-index: 1050 !important;
+    background-color: #355196 !important;
+    overflow: visible !important; /* prevent overflow inside sub-header */
   }
   .navbar-nav {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 10px;
     border-radius: 8px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.37);
+    height: auto !important;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    z-index: 1100;
+    padding-left: 10px !important;
   }
   .navbar-nav .nav-item {
     margin: 5px 0;
   }
+  .navbar-nav .nav-link {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:focus,
+  .navbar-nav .nav-link:active {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: red !important;
+    border-radius: 4px;
+  }
+  
+  .navbar-toggler.collapsed {
+    display: block !important;
+  }
+  .navbar-toggler:not(.collapsed) {
+    display: block !important;
+  }
+  /* Fix hamburger icon visibility when menu is open */
+  .navbar-toggler {
+    position: fixed !important;
+    top: 10px !important;
+    right: 10px !important;
+    z-index: 1200 !important;
+  }
+  .navbar-toggler .navbar-toggler-icon {
+    display: block !important;
+  }
 }
+
+@media (min-width: 351px) and (max-width: 768px) {
+  .glass-nav {
+    top: 80px !important; /* smaller top offset for widths above 350px */
+  }
+  #mainNav {
+    top: 40px !important; /* smaller top offset for widths above 350px */
+  }
+}
+
+
+/* Close menu button */
+.close-menu {
+    display: none;
+  }
+  .collapse.show .close-menu {
+    display: none;
+  }
+  .navbar-nav {
+    padding-top: 0; /* reset padding after removing close button */
+  }
 
 /* Smooth Scroll Animation */
 html {
   scroll-behavior: smooth;
+}
+
+/* Remove transition on collapse to speed up hamburger menu toggle */
+#mainNav.collapsing,
+#mainNav.collapse {
+  transition: none !important;
 }
